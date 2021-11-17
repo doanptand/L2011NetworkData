@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.ddona.data.adapter.NewsAdapter
 import com.ddona.data.databinding.ActivityMainBinding
 import com.ddona.data.model.News
+import com.ddona.data.paser.Director
 import com.ddona.data.paser.NewsParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,5 +34,8 @@ class MainActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
+
+        val doan = Director.getInstance()
+        val hieu = Director.getInstance()
     }
 }
