@@ -2,10 +2,12 @@ package com.ddona.data
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.ddona.data.adapter.NewsAdapter
 import com.ddona.data.databinding.ActivityMainBinding
 import com.ddona.data.model.News
+import com.ddona.data.paser.CommentParser
 import com.ddona.data.paser.Director
 import com.ddona.data.paser.NewsParser
 import kotlinx.coroutines.Dispatchers
@@ -30,12 +32,13 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             val items = NewsParser.getNews("https://cdn.24h.com.vn/upload/rss/trangchu24h.rss")
             news.addAll(items)
+            val comments =
+                CommentParser.getAllComment("https://jsonplaceholder.cypress.io/comments")
+            Log.d("doanpt", "Comment size is ${comments.size}")
             withContext(Dispatchers.Main) {
                 adapter.notifyDataSetChanged()
             }
         }
 
-        val doan = Director.getInstance()
-        val hieu = Director.getInstance()
     }
 }
