@@ -32,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             val items = NewsParser.getNews("https://cdn.24h.com.vn/upload/rss/trangchu24h.rss")
             news.addAll(items)
-            val comments =
-                CommentParser.getAllComment("https://jsonplaceholder.cypress.io/comments")
-            Log.d("doanpt", "Comment size is ${comments.size}")
             withContext(Dispatchers.Main) {
                 adapter.notifyDataSetChanged()
             }
