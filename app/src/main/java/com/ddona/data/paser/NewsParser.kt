@@ -62,7 +62,7 @@ object NewsParser {
                 }
             }
             //next the
-            xmlPullParser.next()
+            eventType = xmlPullParser.next()
         }
 
 
